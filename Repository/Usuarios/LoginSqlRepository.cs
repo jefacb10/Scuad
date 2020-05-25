@@ -15,9 +15,9 @@ namespace Scuad.Repository
             {
                 
                 var sql = $@"SELECT     COUNT(*)
-                             FROM       dbo.USER WITH(NOLOCK)
-                             WHERE      NOME={usuario}
-                                        AND SENHA={senha}";
+                             FROM       dbo.USUARIOS WITH(NOLOCK)
+                             WHERE      NOME='{usuario}' 
+                                        AND SENHA='{senha}'";
 
                 var command = new SqlCommand(sql, connection);
                 connection.Open();
