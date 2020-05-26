@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Scuad - Portal";
+}
+
+@model Scuad.Models.Users
+<h1>Usuários</h1>
+<hr />
+<p>Insira um usuário:</p>
+<div class="input-group mb-3">
+    Nome:
+    @Html.TextBoxFor(model => model.UserName)
+</div>
+<div class="btn-group">
+    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Small button
+    </button>
+    <div class="dropdown-menu">
+        ...
+    </div>
+</div>
+<div style="color:red">
+    @ViewBag.Error
+</div>
+<input type="submit" class="btn btn-primary" style="margin-top: 10px;margin-left:5rem;" value="Salvar">
+<input type="checkbox" checked data-toggle="toggle" /> Habilitar usuário
+

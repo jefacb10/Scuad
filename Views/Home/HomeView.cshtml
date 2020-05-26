@@ -1,12 +1,15 @@
 ﻿
 @{
-    ViewBag.Title = "HomeView";
+    ViewBag.Title = "Scuad - Portal";
 }
 
 <h1>Portal</h1>
 <hr />
-@using(Html.BeginForm("Charge", "Home")){
+@using (Html.BeginForm("Charge", "Home"))
+{
     <input type="submit" class="btn btn-primary" style="margin-top: 10px;margin-left:5rem;" value="Cargos">
 }
-<input type="submit" class="btn btn-primary" style="margin-top: 10px;margin-left:5rem;" value="Usuários">
-
+@using (Html.BeginForm("Users", "Home"))
+{
+    <input type="submit" class="btn btn-primary" style="margin-top: 10px;margin-left:5rem;" value="Usuários">
+}

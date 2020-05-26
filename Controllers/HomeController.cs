@@ -18,5 +18,9 @@ namespace Scuad.Controllers
         {
             return View("~/Views/Charge/ChargeView.cshtml");
         }
+        public ActionResult Users()
+        {
+            return View("~/Views/Users/UsersView.cshtml");
+        }
     }
 }

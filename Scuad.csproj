@@ -123,6 +123,7 @@
     <Compile Include="Controllers\ChargeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginUserController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -170,10 +171,10 @@
     <Content Include="Views\LoginUser\Index.cshtml" />
     <Content Include="Views\Charge\ChargeView.cshtml" />
     <Content Include="Views\Home\HomeView.cshtml" />
+    <Content Include="Views\Users\UsersView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Usuarios\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

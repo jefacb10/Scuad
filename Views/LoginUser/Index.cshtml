@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Scad - Portal";
+    ViewBag.Title = "Scuad - Portal";
 }
 
 @model Scuad.Models.Users
@@ -9,20 +9,17 @@
     <hr />
     <p>Insira seu usuário e senha abaixo:</p>
     <div class="input-group mb-3">
-        Usuário:
-        @Html.TextBoxFor(model => model.UserName)
+        @Html.TextBoxFor(model => model.UserName, new { @class="form-control", placeholder="Login"})
     </div>
-    <div class="input-group mb-3" style="margin-top: 10px; margin-left:7px;">
-        Senha:
-        @Html.TextBoxFor(model => model.Password)
+    <div class="input-group mb-3" style="margin-top: 10px;">
+        @Html.TextBoxFor(model => model.Password, new { @class="form-control", type="password", placeholder="Senha"})
     </div>
     <div style="color:red">
         @ViewBag.Error
     </div>
-    <input type="submit" class="btn btn-primary" style="margin-top: 10px;margin-left:10rem;" value="Entrar">
+    <input type="submit" class="btn btn-primary" style="margin-top: 10px;margin-left:5rem;" value="Entrar">
 }
 <style>
-    
     .logout{
         display:none;
     }
