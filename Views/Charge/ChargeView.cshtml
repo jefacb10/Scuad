@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "ChargeView";
+}
+@model Scuad.Models.Cargos.Charge
+<h1>Cargos</h1>
+<hr />
+<p>Insira o nome de um cargo:</p>
+<div class="input-group mb-3">
+    Cargo:
+    @Html.TextBoxFor(model=> model.Name)
+</div>
+<div style="color:red">
+    @ViewBag.Error
+</div>
+<input type="submit" class="btn btn-primary" style="margin-top: 10px;margin-left:5rem;" value="Salvar">
+<input type="checkbox" checked data-toggle="toggle"/> Habilitar Cargo 
+

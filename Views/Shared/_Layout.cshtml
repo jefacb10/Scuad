@@ -10,6 +10,18 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
+    <style>
+        .logout{
+            position: absolute;
+            right:30px;
+            top: 6px;
+            font-size: 14px;
+        }
+        .navbar-brand{
+            pointer-events: none;
+            cursor: default;
+        }
+    </style>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -18,7 +30,10 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Scuad - Portal", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <span class="navbar-brand">Scuad - Portal</span>
+            </div>
+            <div class="logout">
+                @Html.ActionLink("Sair", "Index", "LoginUser", new { area = "" }, new { @class = "logout" })
             </div>
         </div>
     </div>

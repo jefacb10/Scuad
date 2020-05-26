@@ -120,12 +120,16 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ChargeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginUserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Users.cs" />
+    <Compile Include="Models\Cargos\Charge.cs" />
+    <Compile Include="Models\Usuarios\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\Cargos\IChargeRepository.cs" />
     <Compile Include="Repository\SqlRepository.cs" />
     <Compile Include="Repository\Usuarios\ILoginRepository.cs" />
     <Compile Include="Repository\Usuarios\LoginSqlRepository.cs" />
@@ -163,12 +167,12 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Cargo\ChargeView.cshtml" />
+    <Content Include="Views\LoginUser\Index.cshtml" />
+    <Content Include="Views\Charge\ChargeView.cshtml" />
+    <Content Include="Views\Home\HomeView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Repository\Cargo\" />
     <Folder Include="Views\Usuarios\" />
   </ItemGroup>
   <ItemGroup>
