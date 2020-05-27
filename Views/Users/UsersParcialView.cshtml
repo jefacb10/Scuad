@@ -1,8 +1,9 @@
 ﻿@model Scuad.ViewModel.UsersViewModel
+    @using (Html.BeginForm("UpdateActive","Users", new { idUser = Model })) {
     <table class="table" width="100px">
         <thead class="thead-dark">
             <tr>
-                <th scope="col">&nbsp;</th>
+                <th scope="col">@Html.DisplayName("ID")</th>
                 <th scope="col">@Html.DisplayName("Nome")</th>
                 <th scope="col">@Html.DisplayName("Cargo")</th>
                 <th scope="col">@Html.DisplayName("Ativo")</th>
@@ -11,12 +12,26 @@
         <tbody>
             @foreach (var usuario in Model.UsersList)
             {
-                <tr>
-                    <th>&nbsp;</th>
-                    <td>@Html.DisplayFor(model => usuario.UserName)</td>
-                    <td>@Html.DisplayFor(model => usuario.Charges.Name)</td>
-                    <td>@Html.DisplayFor(model => usuario.IsActive)</td>
-                </tr>
+             
+                if(usuario.IsActive == "Não")
+                {
+                    <tr style="background-color: #E0E0E0">
+                        <th>@Html.DisplayFor(model => usuario.IdUser)</th>
+                        <td>@Html.DisplayFor(model => usuario.UserName)</td>
+                        <td>@Html.DisplayFor(model => usuario.Charges.Name)</td>
+                        <td>@Html.TextBoxFor(model => usuario.IsActive, new { type="submit" })</td>
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <th>@Html.DisplayFor(model => usuario.IdUser)</th>
+                        <td>@Html.DisplayFor(model => usuario.UserName)</td>
+                        <td>@Html.DisplayFor(model => usuario.Charges.Name)</td>
+                        <td>@Html.TextBoxFor(model => usuario.IsActive, new { @class="btn-primary", type="submit"})</td>
+                    </tr>
+                }
             }
         </tbody>
     </table>
+    }

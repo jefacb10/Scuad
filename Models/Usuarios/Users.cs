@@ -5,6 +5,7 @@ namespace Scuad.Models
 {
     public sealed class Users
     {
+        public int IdUser { get; set; }
 
         [Required]
         [Display(Name = "Username")]
@@ -17,6 +18,6 @@ namespace Scuad.Models
 
         public Charge Charges { get; set; }
 
-        public bool IsActive { get; set; }
+        public string IsActive { get; set; }
     }
 }

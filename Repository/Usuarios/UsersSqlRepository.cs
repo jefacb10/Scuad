@@ -43,9 +43,10 @@ namespace Scuad.Repository.Usuarios
             using (var connection = new SqlConnection(ConnectionString))
             {
 
-                var sql = $@"SELECT		USUARIOS.NOME,
+                var sql = $@"SELECT		USUARIOS.ID_USUARIO,
+                                        USUARIOS.NOME,
 			                            CARGOS.CARGO,
-			                            CASE USUARIOS.ATIVO WHEN 1 THEN 'true' ELSE 'false' END AS ATIVO
+			                            CASE USUARIOS.ATIVO WHEN 1 THEN 'Sim' ELSE 'Não' END AS ATIVO
                             FROM		dbo.USUARIOS WITH(NOLOCK)
                             INNER JOIN	CARGOS ON USUARIOS.ID_CARGO=CARGOS.ID_CARGO";
 
@@ -57,10 +58,10 @@ namespace Scuad.Repository.Usuarios
                     {
                         var usuario = new Users()
                         {
-
+                            IdUser = Convert.ToInt32(reader["ID_USUARIO"]),
                             UserName = Convert.ToString(reader["NOME"]),
                             Charges = new Charge() { Name = Convert.ToString(reader["CARGO"])},
-                            IsActive = Convert.ToBoolean(reader["ATIVO"])
+                            IsActive = Convert.ToString(reader["ATIVO"])
                         };
                         usuarios.Add(usuario);
                     }

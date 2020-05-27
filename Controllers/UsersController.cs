@@ -55,5 +55,18 @@ namespace Scuad.Controllers
             }
             return RedirectToAction("Index");
         }
+        [HttpPost]
+        public ActionResult UpdateActive(
+            UsersViewModel uvm = null)
+        {
+            var idRecebido = Convert.ToInt32(uvm.Users.IdUser);
+            if(idRecebido == 0) { 
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+        }
     }
 }
