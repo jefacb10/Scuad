@@ -11,16 +11,22 @@ namespace Scuad.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            return View();
+            return View("~/Views/Home/HomeView.cshtml");
         }
 
-        public ActionResult Charge()
+
+        public ActionResult Change(string tela)
         {
-            return View("~/Views/Charge/ChargeView.cshtml");
+            switch (tela)
+            {
+                case "Cargos":
+                    return RedirectToRoute(new { controller = "Charge", action = "Index" });
+                case "Usuários":
+                    return RedirectToRoute(new { controller = "Users", action = "Index" });
+                default:
+                    return View();
+            }
         }
-        public ActionResult Users()
-        {
-            return View("~/Views/Users/UsersView.cshtml");
-        }
+
     }
 }

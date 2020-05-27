@@ -6,7 +6,7 @@ namespace Scuad.Controllers
 {
     public sealed class LoginUserController : Controller
     {
-        private readonly LoginSqlRepository _loginRepository;
+        private readonly ILoginRepository _loginRepository;
 
         public LoginUserController()
         {
@@ -16,19 +16,18 @@ namespace Scuad.Controllers
         public ActionResult Index()
         {
             Users users = new Users();
-            return View();
+            return View(users);
         }
 
         [HttpPost]
         public ActionResult Login(Users users)
         {
-            var result = _loginRepository.consultarLogin(
+            var result = _loginRepository.ConsultarLogin(
                 users.UserName,
                 users.Password);
 
             if(result > 0)
             {
-                Session["username"] = users.UserName;
                 return View("~/Views/Home/HomeView.cshtml");
             }
             else

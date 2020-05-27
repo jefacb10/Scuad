@@ -5,11 +5,8 @@
 
 <h1>Portal</h1>
 <hr />
-@using (Html.BeginForm("Charge", "Home"))
+@using (Html.BeginForm("Change", "Home"))
 {
-    <input type="submit" class="btn btn-primary" style="margin-top: 10px;margin-left:5rem;" value="Cargos">
-}
-@using (Html.BeginForm("Users", "Home"))
-{
-    <input type="submit" class="btn btn-primary" style="margin-top: 10px;margin-left:5rem;" value="Usuários">
+    <input type="submit" class="btn btn-primary" name="tela" style="margin-top: 10px;margin-left:5rem;" value="Cargos">
+    <input type="submit" class="btn btn-primary" name="tela" style="margin-top: 10px;margin-left:5rem;" value="Usuários">
 }

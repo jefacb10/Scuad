@@ -3,17 +3,45 @@
     ViewBag.Title = "Scuad - Portal";
 }
 @model Scuad.Models.Cargos.Charge
+@Html.ActionLink("Página Inicial", "Home", "Charge", new { @class = "nav-tags" })
+@Html.ActionLink("Usuários", "Users", "Charge", new { @class = "nav-tags" })
 <h1>Cargos</h1>
 <hr />
 <p>Insira o nome de um cargo:</p>
 <div class="input-group mb-3">
-    Cargo:
-    @Html.TextBoxFor(model=> model.Name)
+    @Html.TextBoxFor(model => model.Name, new { @class = "form-control", placeholder = "Cargo" })
 </div>
 <div style="color:red">
     @ViewBag.Error
 </div>
-<input type="submit" class="btn btn-primary" style="margin-top: 10px;margin-left:5rem;" value="Salvar">
-<input type="checkbox" checked data-toggle="toggle"/> Habilitar Cargo 
+<input type="submit" class="btn btn-primary" style="margin-top: 20px;" value="Salvar">
+<hr />
+<br />
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">&nbsp;</th>
+            <th scope="col">Cargo</th>
+            <th scope="col">Ativo</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>1</th>
+            <td>Desenvolvedor</td>
+            <td>Sim</td>
+        </tr>
+        <tr>
+            <th>2</th>
+            <td>Ux Designer</td>
+            <td>Sim</td>
+        </tr>
+        <tr>
+            <th>3</th>
+            <td>Analista Contábil</td>
+            <td>Não</td>
+        </tr>
+    </tbody>
+</table>
 
 

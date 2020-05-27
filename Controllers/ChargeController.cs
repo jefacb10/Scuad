@@ -8,7 +8,7 @@ namespace Scuad.Controllers
         // GET: Charge
         public ActionResult Index()
         {
-            return View();
+            return View("~/Views/Charge/ChargeView.cshtml");
         }
 
         [HttpGet]
@@ -17,5 +17,14 @@ namespace Scuad.Controllers
             return View();
         }
 
+        public ActionResult Home()
+        {
+            return RedirectToRoute(new { controller = "Home", action = "Index" });
+        }
+
+        public ActionResult Users()
+        {
+            return RedirectToRoute(new { controller = "Users", action = "Index" });
+        }
     }
 }

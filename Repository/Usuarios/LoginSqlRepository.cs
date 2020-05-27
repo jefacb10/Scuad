@@ -6,7 +6,7 @@ namespace Scuad.Repository
     public sealed class LoginSqlRepository : 
         SqlRepository, ILoginRepository
     {
-        public int consultarLogin(
+        public int ConsultarLogin(
             string usuario, 
             string senha)
         {

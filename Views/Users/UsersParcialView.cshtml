@@ -1,0 +1,22 @@
+﻿@model Scuad.ViewModel.UsersViewModel
+    <table class="table" width="100px">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">&nbsp;</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Users.UserName)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Users.Charge)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Users.Charge)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var usuario in Model.UsersList)
+            {
+                <tr>
+                    <th>&nbsp;</th>
+                    <td>@Html.DisplayFor(model => usuario.UserName)</td>
+                    <td>@Html.DisplayFor(model => usuario.Charge)</td>
+                    <td>@Html.DisplayFor(model => usuario.IsActive)</td>
+                </tr>
+            }
+        </tbody>
+    </table>

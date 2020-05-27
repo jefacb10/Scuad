@@ -2,7 +2,7 @@
 {
     public interface ILoginRepository
     {
-        int consultarLogin(
+        int ConsultarLogin(
             string usuario,
             string senha);
     }

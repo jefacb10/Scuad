@@ -1,0 +1,21 @@
+﻿@model Scuad.ViewModel.ChargeViewModel
+
+    <table class="table" width="100px">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">&nbsp;</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Charge.Name)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Charge.IsActive)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var cargo in Model.ChargesList)
+            {
+                <tr>
+                    <th>&nbsp;</th>
+                    <td>@Html.DisplayFor(model => cargo.Name)</td>
+                    <td>@Html.DisplayFor(model => cargo.IsActive)</td>
+                </tr>
+            }
+        </tbody>
+    </table>

@@ -7,6 +7,8 @@ namespace Scuad.Models.Cargos
 {
     public class Charge
     {
+        public int IdCharge { get; set; }
+
         public string Name { get; set; }
 
         public bool IsActive { get; set; }

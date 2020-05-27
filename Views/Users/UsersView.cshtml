@@ -3,25 +3,35 @@
     ViewBag.Title = "Scuad - Portal";
 }
 
-@model Scuad.Models.Users
+@model Scuad.ViewModel.UsersViewModel
+
+@Html.ActionLink("Página Inicial", "Home", "Users", new { @class = "nav-tags" })
+@Html.ActionLink("Cargos", "Charge", "Users", new { @class = "nav-tags" })
 <h1>Usuários</h1>
 <hr />
-<p>Insira um usuário:</p>
-<div class="input-group mb-3">
-    Nome:
-    @Html.TextBoxFor(model => model.UserName)
-</div>
-<div class="btn-group">
-    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Small button
-    </button>
-    <div class="dropdown-menu">
-        ...
+<form>
+    <p>Insira um usuário:</p>
+    <div style="display: flex; align-items:flex-start; flex-direction: row">
+        <div class="input-group mb-3">
+            @Html.TextBoxFor(model => model.Users.UserName, new { @class = "form-control", placeholder = "Usuário" })
+        </div>
+        @Html.DropDownListFor(model=>model.Users.Charge,
+                    new SelectList(Model.Charges.Select(c=> c.Name)),
+                    "Escolha um cargo",
+                    new { @class = "form-control", style="margin-left: 20px;" })
+
+        @*<select class="form-control" id="cargosList" style="margin-left: 20px;">
+                <option>Desenvolvedor</option>
+                <option>Ux Design</option>
+                <option>Administrador</option>
+                <option>Gerente</option>
+                <option>Analista Contábil</option>
+            </select>*@
     </div>
-</div>
-<div style="color:red">
-    @ViewBag.Error
-</div>
-<input type="submit" class="btn btn-primary" style="margin-top: 10px;margin-left:5rem;" value="Salvar">
-<input type="checkbox" checked data-toggle="toggle" /> Habilitar usuário
+    <br />
+    <input type="submit" class="btn btn-primary" value="Salvar">
+</form>
+<hr />
+<br />
+@Html.Partial("UsersParcialView", Model)
 

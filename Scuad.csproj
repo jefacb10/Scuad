@@ -133,7 +133,11 @@
     <Compile Include="Repository\Cargos\IChargeRepository.cs" />
     <Compile Include="Repository\SqlRepository.cs" />
     <Compile Include="Repository\Usuarios\ILoginRepository.cs" />
+    <Compile Include="Repository\Usuarios\IUsersRepository.cs" />
     <Compile Include="Repository\Usuarios\LoginSqlRepository.cs" />
+    <Compile Include="Repository\Usuarios\UsersSqlRepository.cs" />
+    <Compile Include="ViewModel\ChargeViewModel.cs" />
+    <Compile Include="ViewModel\UsersViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -172,6 +176,8 @@
     <Content Include="Views\Charge\ChargeView.cshtml" />
     <Content Include="Views\Home\HomeView.cshtml" />
     <Content Include="Views\Users\UsersView.cshtml" />
+    <Content Include="Views\Users\UsersParcialView.cshtml" />
+    <Content Include="Views\Charge\ChargeParcialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

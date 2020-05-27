@@ -5,10 +5,7 @@ namespace Scuad.Repository.Cargos
 {
     public interface IChargeRepository
     {
-        IEnumerable<Charge> ConsultarCargos();
-
-        int SelecionarCargo(
-            string nomeCargo);
+        List<Charge> ListarCargos();
 
         bool AtualizarAtivacao(
             int idCargo);
