@@ -8,7 +8,8 @@ namespace Scuad.Repository.Cargos
     public class ChargeSqlRepository :
         SqlRepository, IChargeRepository
     {
-        public void AlterarAtivo(int idCargo)
+        public void AlterarAtivo(
+            int idCargo)
         {
             using (var connection = new SqlConnection(ConnectionString))
             {
