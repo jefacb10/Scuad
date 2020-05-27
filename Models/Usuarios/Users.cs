@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Scuad.Models.Cargos;
+using System.ComponentModel.DataAnnotations;
 
 namespace Scuad.Models
 {
@@ -14,7 +15,7 @@ namespace Scuad.Models
         [Display(Name = "Password")]
         public string Password { get; set; }
 
-        public string Charge { get; set; }
+        public Charge Charges { get; set; }
 
         public bool IsActive { get; set; }
     }

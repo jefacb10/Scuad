@@ -1,20 +1,34 @@
-﻿using System.Web.Mvc;
+﻿using Scuad.Repository.Cargos;
+using Scuad.ViewModel;
+using System.Web.Mvc;
 
 namespace Scuad.Controllers
 {
     public class ChargeController : Controller
     {
+        private readonly IChargeRepository _chargeRepository;
+
+        public ChargeController()
+        {
+            _chargeRepository = new ChargeSqlRepository();
+        }
 
         // GET: Charge
         public ActionResult Index()
         {
-            return View("~/Views/Charge/ChargeView.cshtml");
+            var cvm = new ChargeViewModel();
+            cvm.ChargesList = _chargeRepository.ListarCargos();
+            return View("~/Views/Charge/ChargeView.cshtml", cvm);
         }
 
-        [HttpGet]
-        public ActionResult ListarCargos()
+        [HttpPost]
+        public ActionResult SaveCharge(ChargeViewModel cvm)
         {
-            return View();
+            if (cvm.Charge.Name != null) {
+                 _chargeRepository.SalvarCargo(
+                    cvm.Charge.Name);
+            }
+            return RedirectToAction("Index");
         }
 
         public ActionResult Home()

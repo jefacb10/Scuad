@@ -9,28 +9,21 @@
 @Html.ActionLink("Cargos", "Charge", "Users", new { @class = "nav-tags" })
 <h1>Usuários</h1>
 <hr />
-<form>
+@using (Html.BeginForm("SaveUser","Users")) {
     <p>Insira um usuário:</p>
     <div style="display: flex; align-items:flex-start; flex-direction: row">
         <div class="input-group mb-3">
             @Html.TextBoxFor(model => model.Users.UserName, new { @class = "form-control", placeholder = "Usuário" })
         </div>
-        @Html.DropDownListFor(model=>model.Users.Charge,
-                    new SelectList(Model.Charges.Select(c=> c.Name)),
-                    "Escolha um cargo",
-                    new { @class = "form-control", style="margin-left: 20px;" })
+        @Html.DropDownListFor(model => model.Users.Charges.Name,
+                     new SelectList(Model.Charges.Select(c => c.Name)),
+                     "Escolha um cargo",
+                     new { @class = "form-control", style = "margin-left: 20px;" })
 
-        @*<select class="form-control" id="cargosList" style="margin-left: 20px;">
-                <option>Desenvolvedor</option>
-                <option>Ux Design</option>
-                <option>Administrador</option>
-                <option>Gerente</option>
-                <option>Analista Contábil</option>
-            </select>*@
     </div>
     <br />
     <input type="submit" class="btn btn-primary" value="Salvar">
-</form>
+}
 <hr />
 <br />
 @Html.Partial("UsersParcialView", Model)

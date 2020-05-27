@@ -59,7 +59,7 @@ namespace Scuad.Repository.Usuarios
                         {
 
                             UserName = Convert.ToString(reader["NOME"]),
-                            Charge = Convert.ToString(reader["CARGO"]),
+                            Charges = new Charge() { Name = Convert.ToString(reader["CARGO"])},
                             IsActive = Convert.ToBoolean(reader["ATIVO"])
                         };
                         usuarios.Add(usuario);
@@ -68,6 +68,26 @@ namespace Scuad.Repository.Usuarios
                 connection.Close();
             }
             return usuarios;
+        }
+
+        public void SalvarUsuario(
+            string nome, 
+            int cargo)
+        {
+            using (var connection = new SqlConnection(ConnectionString))
+            {
+                connection.Open();
+                var sql = $@"IF NOT EXISTS(SELECT 1 FROM USUARIOS WHERE NOME='{nome}')
+	                                INSERT INTO USUARIOS(NOME,ID_CARGO, ATIVO)
+	                                VALUES ('{nome}', '{cargo}', 1)
+                             ELSE
+	                                UPDATE USUARIOS
+	                                SET ID_CARGO='{cargo}'
+	                                WHERE NOME='{nome}'";
+                var command = new SqlCommand(sql, connection);
+                var result = command.ExecuteNonQuery();
+                connection.Close();
+            }
         }
     }
 }

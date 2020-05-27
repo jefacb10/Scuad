@@ -1,4 +1,5 @@
-﻿using Scuad.Repository.Usuarios;
+﻿using Scuad.Repository.Cargos;
+using Scuad.Repository.Usuarios;
 using Scuad.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -11,10 +12,12 @@ namespace Scuad.Controllers
     public class UsersController : Controller
     {
         private readonly IUsersRepository _userRepository;
+        private readonly IChargeRepository _chargeRepository;
 
         public UsersController()
         {
             _userRepository = new UsersSqlRepository();
+            _chargeRepository = new ChargeSqlRepository();
         }
 
 
@@ -37,6 +40,20 @@ namespace Scuad.Controllers
         {
             return RedirectToRoute(new { controller = "Charge", action = "Index" });
             
+        }
+
+        [HttpPost]
+        public ActionResult SaveUser(UsersViewModel uvm)
+        {
+            if (uvm.Users.UserName != null 
+                && uvm.Users.Charges.Name != null)
+            {
+                uvm.Users.Charges.IdCharge = _chargeRepository.ListarIdCargo(uvm.Users.Charges.Name); 
+                _userRepository.SalvarUsuario(
+                    uvm.Users.UserName,
+                    uvm.Users.Charges.IdCharge);
+            }
+            return RedirectToAction("Index");
         }
     }
 }

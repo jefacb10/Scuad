@@ -7,12 +7,13 @@ namespace Scuad.Repository.Cargos
     {
         List<Charge> ListarCargos();
 
-        bool AtualizarAtivacao(
-            int idCargo);
+        //bool AtualizarAtivacao(
+        //    int idCargo);
 
-        int SalvarCargo(
-            string nomeCargo,
-            int ativo);
+        int ListarIdCargo(
+            string nomeCargo);
+        void SalvarCargo(
+            string nomeCargo);
 
     }
 }

@@ -11,5 +11,8 @@ namespace Scuad.Repository.Usuarios
     {
         List<Charge> ListarCargos();
         List<Users> ListarUsuarios();
+        void SalvarUsuario(
+            string nome,
+            int cargo);
     }
 }
