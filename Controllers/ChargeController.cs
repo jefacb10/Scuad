@@ -40,5 +40,20 @@ namespace Scuad.Controllers
         {
             return RedirectToRoute(new { controller = "Users", action = "Index" });
         }
+        [HttpPost]
+        public ActionResult UpdateActive(
+            int idCharge = 0)
+        {
+            var idRecebido = idCharge;
+            if (idRecebido == 0)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                _chargeRepository.AlterarAtivo(idRecebido);
+                return RedirectToAction("Index");
+            }
+        }
     }
 }

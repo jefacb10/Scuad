@@ -7,8 +7,8 @@ namespace Scuad.Repository.Cargos
     {
         List<Charge> ListarCargos();
 
-        //bool AtualizarAtivacao(
-        //    int idCargo);
+        void AlterarAtivo(
+            int idCargo);
 
         int ListarIdCargo(
             string nomeCargo);

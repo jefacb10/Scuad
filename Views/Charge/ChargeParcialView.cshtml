@@ -11,11 +11,25 @@
         <tbody>
             @foreach (var cargo in Model.ChargesList)
             {
-                <tr>
-                    <th>&nbsp;</th>
-                    <td>@Html.DisplayFor(model => cargo.Name)</td>
-                    <td>@Html.CheckBoxFor(model => cargo.IsActive)</td>
-                </tr>
+                using (Html.BeginForm("UpdateActive", "Charge", new { cargo.IdCharge }))
+                {
+                    if (cargo.IsActive == "Não")
+                    {
+                        <tr style="background-color: #E0E0E0">
+                            <th>@Html.DisplayFor(model => cargo.IdCharge)</th>
+                            <td>@Html.DisplayFor(model => cargo.Name)</td>
+                            <td>@Html.TextBoxFor(model => cargo.IsActive, new { type = "submit" })</td>
+                        </tr>
+                    }
+                    else
+                    {
+                        <tr>
+                            <th>@Html.DisplayFor(model => cargo.IdCharge)</th>
+                            <td>@Html.DisplayFor(model => cargo.Name)</td>
+                            <td>@Html.TextBoxFor(model => cargo.IsActive, new {  @class = "btn-primary",type = "submit" })</td>
+                        </tr>
+                    }
+                }
             }
         </tbody>
     </table>

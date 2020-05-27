@@ -8,6 +8,21 @@ namespace Scuad.Repository.Cargos
     public class ChargeSqlRepository :
         SqlRepository, IChargeRepository
     {
+        public void AlterarAtivo(int idCargo)
+        {
+            using (var connection = new SqlConnection(ConnectionString))
+            {
+                connection.Open();
+                var sql = $@"DECLARE    @Ativo INT = (SELECT ATIVO FROM CARGOS WHERE ID_CARGO={idCargo});
+                            UPDATE	    CARGOS
+                            SET		    ATIVO= CASE @Ativo WHEN 1 THEN 0 ELSE 1 END
+                            WHERE       ID_CARGO={idCargo}";
+                var command = new SqlCommand(sql, connection);
+                var result = command.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
+
         public List<Charge> ListarCargos()
         {
             var cargos = new List<Charge>();
@@ -16,7 +31,7 @@ namespace Scuad.Repository.Cargos
 
                 var sql = $@"SELECT     CARGO,
                                         ID_CARGO,
-                                        CASE ATIVO WHEN 1 THEN 'true' ELSE 'false' END AS ATIVO
+                                        CASE ATIVO WHEN 1 THEN 'Sim' ELSE 'Não' END AS ATIVO
                             FROM        dbo.CARGOS WITH(NOLOCK)";
 
                 var command = new SqlCommand(sql, connection);
@@ -29,7 +44,7 @@ namespace Scuad.Repository.Cargos
                         {
                             Name = Convert.ToString(reader["CARGO"]),
                             IdCharge = Convert.ToInt32(reader["ID_CARGO"]),
-                            IsActive = Convert.ToBoolean(reader["ATIVO"])
+                            IsActive = Convert.ToString(reader["ATIVO"])
                         };
                         cargos.Add(cargo);
                     }

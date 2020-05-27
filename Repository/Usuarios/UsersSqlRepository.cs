@@ -9,6 +9,22 @@ namespace Scuad.Repository.Usuarios
     public sealed class UsersSqlRepository:
         SqlRepository, IUsersRepository
     {
+        public void AlterarAtivo(
+            int idUser)
+        {
+            using (var connection = new SqlConnection(ConnectionString))
+            {
+                connection.Open();
+                var sql = $@"DECLARE    @Ativo INT = (SELECT ATIVO FROM USUARIOS WHERE ID_USUARIO={idUser});
+                            UPDATE	    USUARIOS
+                            SET		    ATIVO= CASE @Ativo WHEN 1 THEN 0 ELSE 1 END
+                            WHERE       ID_USUARIO={idUser}";
+                var command = new SqlCommand(sql, connection);
+                var result = command.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
+
         public List<Charge> ListarCargos()
         {
             var cargos = new List<Charge>();

@@ -57,14 +57,15 @@ namespace Scuad.Controllers
         }
         [HttpPost]
         public ActionResult UpdateActive(
-            UsersViewModel uvm = null)
+            int idUser = 0)
         {
-            var idRecebido = Convert.ToInt32(uvm.Users.IdUser);
+            var idRecebido = idUser;
             if(idRecebido == 0) { 
                 return RedirectToAction("Index");
             }
             else
             {
+                _userRepository.AlterarAtivo(idRecebido);
                 return RedirectToAction("Index");
             }
         }
